@@ -1,9 +1,10 @@
 export class Produto{
     constructor(
-        private nome: string | null,
-        private codigo: string | null,
-        private preco: number,
-        private quantidade: number
+        protected nome: string | null,
+        protected codigo: string | null,
+        protected preco: number,
+        protected quantidade: number,
+        private id?: number,
     ){}
 
     getNome(){ return this.nome; }
@@ -21,18 +22,28 @@ export class Produto{
     getQuantidade(){ return this.quantidade; }
 
     setQuantidade(quantidade: number){ this.quantidade = quantidade; }
+
+    getID(){ return this.id; }
 }
 
 abstract class Movimentacao{
+    constructor(protected produto: Produto, protected quantidade: number){}
 
+    getProduto(){ return this.produto; }
+
+    getQuantidade(){ return this.quantidade; }
 }
 
-class Entrada extends Movimentacao{
-
+export class Entrada extends Movimentacao{
+    constructor(produto: Produto, quantidade: number){
+        super(produto, quantidade)
+    }
 }
 
-class Saida extends Movimentacao{
-
+export class Saida extends Movimentacao{
+    constructor(produto: Produto, quantidade: number){
+        super(produto, quantidade)
+    }
 }
 
 class Estoque{
