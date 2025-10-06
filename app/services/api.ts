@@ -45,9 +45,6 @@ export function getProdutos(){
 
         const plainData:IProduto[] | undefined = JSON.parse(JSON.stringify(data));
 
-        console.log(plainData);
-
-
         if(plainData === undefined){
             console.log("\nO estoque está vazio no momento");
             db.close()
