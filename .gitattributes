@@ -1,1 +1,1 @@
-SMPE_backend filter=lfs diff=lfs merge=lfs -text
+SMPE_backend.exe filter=lfs diff=lfs merge=lfs -text
