@@ -4,13 +4,28 @@ import { IProduto } from "../classes/interfaces.ts";
 
 const url_db = "app/data/estoque.db"
 
+function getProdutosContagem(){
+    const db = new DatabaseSync(url_db);
+
+    try{
+        const data = db.prepare("SELECT COUNT(*) FROM produtos").get() as {"COUNT(*)": number};
+
+        db.close();
+        return data["COUNT(*)"];
+    }
+    catch(error){
+        console.log("\nNão foi possível pegar os dados de produtos")
+        console.log("ERROR: " + (error as Error).message);
+    }
+}
+
 export function getProdutoByNome(nome: string){
     const db = new DatabaseSync(url_db);
 
     try{
         const data = db.prepare("SELECT * FROM produtos WHERE nome = ?").get(nome) as IProduto | undefined;
 
-        const produto = new Produto(data?.nome ?? "", data?.codigo ?? "", data?.preco ?? 0, data?.quantidade ?? 0, data?.id)
+        const produto = new Produto(data?.nome ?? "", data?.codigo ?? "", data?.preco ?? 0, data?.quantidade ?? 0, data?.id);
 
         db.close();
         return produto
@@ -26,27 +41,35 @@ export function getProdutos(){
     const db = new DatabaseSync(url_db);
 
     try{
-        const data = JSON.stringify(db.prepare("SELECT * FROM produtos").all());
+        const data = db.prepare("SELECT * FROM produtos").all();
 
-        const produtos = JSON.parse(data) as IProduto[];
+        const plainData:IProduto[] | undefined = JSON.parse(JSON.stringify(data));
 
-        if(produtos.length === 0){
+        console.log(plainData);
+
+
+        if(plainData === undefined){
             console.log("\nO estoque está vazio no momento");
             db.close()
 
             return;
         }
 
-        produtos.forEach((produto) =>{
-            console.log("\nID: " + produto.id);
-            console.log("Nome: " + produto.nome);
-            console.log("Código: " + produto.codigo);
-            console.log("Preço: " + produto.preco);
-            console.log("Quantidade: " + produto.quantidade);
+        const produtos:Produto[] = plainData.map(item => new Produto(item.nome, item.codigo, item.preco, item.quantidade, item.id));
+
+        console.log("\nLogs do Estoque:\n")
+        console.log("Quantidade de Produtos: " + getProdutosContagem());
+
+        produtos?.forEach((produto) =>{
+            console.log("\nID: " + produto.getID());
+            console.log("   Nome: " + produto.getNome());
+            console.log("   Código: " + produto.getCodigo());
+            console.log("   Preço: " + produto.getPreco());
+            console.log("   Quantidade: " + produto.getQuantidade());
         })
     }
     catch(error){
-        console.log("\nNão foi possível pegar os dados de produtos");
+        console.log("\nNão foi possível pegar os dados do Estoque");
         console.log("ERROR: " + (error as Error).message);
     }
 

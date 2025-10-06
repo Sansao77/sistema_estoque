@@ -143,7 +143,7 @@ function registrarEntrada(){
   if(produto !== undefined){
     const entrada = new Entrada(produto, quantidade);
 
-    console.log(entrada);
+    //console.log(entrada);
 
     postEntrada(entrada);
   }
@@ -203,8 +203,6 @@ function registrarSaida(){
 
   if(produto !== undefined){
     const saida = new Saida(produto, quantidade);
-
-    console.log(saida);
 
     postSaida(saida);
   }
