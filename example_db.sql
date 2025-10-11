@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS produtos (
     nome TEXT UNIQUE NOT NULL,
     codigo TEXT NOT NULL,
     preco REAL NOT NULL,
-    quantidade INTEGER NOT NULL
+    quantidade INTEGER NOT NULL,
+    valor_total REAL NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS entradas (

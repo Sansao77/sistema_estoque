@@ -2,13 +2,17 @@
 
 ## Descrição
 
-Sistema de armazenamento de estoque
+Sistema de armazenamento de estoque utilizando Deno + Typescript com banco de dados SQLite. Ele funciona por CLI (Command Line Interface) do computador
 
-## Tecnologias 
+- Exemplo
+
+  ![Exemplo do CLI rodando](./public/Exemplo-CLI.png)
+
+## Tecnologias
 
 <div style="display: inline_block">
     <br>
-    <img align="center" alt="Typescript" height="100" width="33%" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />      
+    <img align="center" alt="Typescript" height="100" width="33%" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
     <img align="center" alt="Deno" height="100" width="33%" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/denojs/denojs-original-wordmark.svg" />
     <img align="center" alt="Sqlite" height="100" width="33%" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original-wordmark.svg" />
 </div>
@@ -29,9 +33,9 @@ Sistema de armazenamento de estoque
             ```sh
             mkdir ~/Downloads/sistema_estoque/app/data && touch ~/Downloads/app/data/estoque.db
             ```
-        
+
         - Para Windows recomendo usar o gerenciador de pastas, criar a pasta e arquivo por ele
-    
+
     2. Iniciar SQLite no arquivo estoque.db
 
         ```sh
@@ -43,7 +47,7 @@ Sistema de armazenamento de estoque
         ```sh
         .read ~/Downloads/sistema_estoque/example_db.sql
         ```
-    
+
     4. Sair do SQLite
 
         ```sh
