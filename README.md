@@ -56,5 +56,5 @@ Sistema de armazenamento de estoque utilizando Deno + Typescript com banco de da
 
 - O executável já pode ser inicializado em Windows ao clicar nele mas para utilizar em Linux/Mac é preciso permitir acesso de execução e rodar:
     ```sh
-    chmod +x ~/Downloads/sistema_estoque/SMPE_backend.exe && ./Downloads/sistema_estoque/SMPE_backend.exe
+    chmod +x ~/Downloads/sistema_estoque/SMPE_backend.exe && /Downloads/sistema_estoque/SMPE_backend.exe
     ```
