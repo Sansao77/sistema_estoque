@@ -31,7 +31,7 @@ Sistema de armazenamento de estoque utilizando Deno + Typescript com banco de da
     1. Criar a pasta /app/data e criar o arquivo estoque.db dentro
         - Para Linux/Mac
             ```sh
-            mkdir ~/Downloads/sistema_estoque/app/data && touch ~/Downloads/app/data/estoque.db
+            mkdir ~/Downloads/sistema_estoque/app/data && touch ~/Downloads/sistema_estoque/app/data/estoque.db
             ```
 
         - Para Windows recomendo usar o gerenciador de pastas, criar a pasta e arquivo por ele
